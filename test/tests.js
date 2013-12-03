@@ -215,4 +215,14 @@ describe('Validation Methods', function(){
     methods.numbersOnly('').should.be.false;
     methods.numbersOnly(undefined).should.be.false;
   });
+  
+  it('should validate if a value matches a regular expression or not', function(){
+    var fn = methods.matchesRegex(/^[abc][123]$/i);
+    fn('a1').should.be.true;
+    fb('aa1').should.be.false;
+    fn(1234).should.be.false;
+    fn('').should.be.false;
+    fn(null).should.be.false;
+    fn(undefined).should.be.false;
+  });
 });
